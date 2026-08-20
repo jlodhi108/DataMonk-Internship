@@ -1,3 +1,20 @@
+# SQLite Performance Assignment
+#
+# NOTE ON DATA: the assignment's sample queries assume columns like
+# `age`, `salary`, and `city`. The actual people_small.csv / people-large.zip
+# provided for this exercise contain a different real-world schema instead:
+# Index, User Id, First Name, Last Name, Sex, Email, Phone, Date of birth, Job Title.
+# There is no salary or city column in this dataset.
+#
+# To keep the exercise meaningful with the real data, the queries below are
+# adapted 1:1 to the closest available equivalents:
+#   - "age" is computed from Date of birth (no raw age column exists)
+#   - "salary" queries (Q3 avg salary by job, Q4 top 5 paid) are replaced with
+#     avg age by job title, and top 5 oldest people, respectively
+#   - "city" (Q5, optional) is replaced with Sex, the only other categorical field
+# All five query types (count, filter, group+aggregate, sort+limit, group+count),
+# timing, back-to-back repeats, and a JOIN across two large tables are still covered.
+
 import sqlite3
 import csv
 import zipfile
