@@ -1,0 +1,18 @@
+---
+- name: Enable Port 80 Using Firewalld
+  hosts: myhosts
+  become: yes
+
+  tasks:
+    - name: Enable port 80/tcp in firewalld
+      ansible.posix.firewalld:
+        port: 80/tcp
+        permanent: true
+        state: enabled
+      notify: Reload firewalld
+
+  handlers:
+    - name: Reload firewalld
+      service:
+        name: firewalld
+        state: reloaded
