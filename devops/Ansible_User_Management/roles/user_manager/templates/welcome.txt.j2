@@ -1,0 +1,14 @@
+{{ welcome_message }}
+
+Hello {{ username }}!
+
+This file was created automatically by Ansible on {{ ansible_date_time.date }}.
+
+Your account details:
+- Username: {{ username }}
+- Shell: {{ user_shell }}
+- Home Directory: /home/{{ username }}
+- Server: {{ ansible_hostname }}
+- OS: {{ ansible_distribution }}
+
+Happy learning!

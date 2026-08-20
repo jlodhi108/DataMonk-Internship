@@ -1,0 +1,19 @@
+---
+- name: Create a new user
+  user:
+    name: "{{ username }}"
+    shell: "{{ user_shell }}"
+    create_home: yes
+    state: present
+
+- name: Deploy welcome message to user's home
+  template:
+    src: welcome.txt.j2
+    dest: "/home/{{ username }}/README.txt"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: '0644'
+
+- name: Display success message
+  debug:
+    msg: "User {{ username }} has been created successfully!"

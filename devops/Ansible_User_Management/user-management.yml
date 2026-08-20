@@ -1,0 +1,10 @@
+---
+- name: Manage users using our custom role
+  hosts: testservers
+  become: yes
+  vars:
+    username: "devops_user"
+    welcome_message: "Congratulations! You successfully used an Ansible role!"
+
+  roles:
+    - user_manager

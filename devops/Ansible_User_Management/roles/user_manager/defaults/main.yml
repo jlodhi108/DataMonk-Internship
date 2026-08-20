@@ -1,0 +1,5 @@
+---
+# Default variables for user_manager role
+username: "student"
+user_shell: "/bin/bash"
+welcome_message: "Welcome to your new Linux account!"
