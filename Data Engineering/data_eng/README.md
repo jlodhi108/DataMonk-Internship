@@ -8,8 +8,8 @@ size affects query speed when no indexes are used.
 
 | File | Records | Notes |
 |---|---|---|
-| `../people-small.csv` | 100 | Plain CSV |
-| `../people-large.zip` | 2,000,000 | Zipped CSV |
+| `../people-small.csv` | 100 | Plain CSV https://drive.google.com/uc?id=1phaHg9objxK2MwaZmSUZAKQ8kVqlgng4&export=download|
+| `../people-large.zip` | 2,000,000 | Zipped CSV https://drive.google.com/uc?id=1fveqbEJIr4o4oMqswF03NA2Qrk1zF7v4&export=download |
 
 Both datasets share the same schema:
 
