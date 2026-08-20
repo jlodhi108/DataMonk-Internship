@@ -1,0 +1,62 @@
+
+
+name: CI – Python Tests
+
+# ── Triggers ────────────────────────────────────────────────
+on:
+  push:
+    branches:
+      - main          # fires whenever commits land on main
+  pull_request:
+    branches:
+      - main          # fires for any PR that targets main
+
+# ── Jobs ────────────────────────────────────────────────────
+jobs:
+  test:
+    name: Run pytest on Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+
+    # Test against multiple Python versions for broader coverage
+    strategy:
+      fail-fast: false          # keep running other versions if one fails
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      # 1. Check out the repository code
+      - name: ⬇️  Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Set up the requested Python version
+      - name: 🐍  Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"           # cache pip packages to speed up future runs
+
+      # 3. Upgrade pip, then install project dependencies
+      - name: 📦  Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4. Run the test suite with verbose output
+      - name: ✅  Run tests with pytest
+        run: |
+          pytest tests/ -v --tb=short
+
+      # 5. (Optional) Upload a test results summary as an artifact
+      #    so the team can inspect detailed reports from the Actions UI.
+      - name: 📊  Generate JUnit XML report
+        if: always()            # run even when tests fail so we get the report
+        run: |
+          pytest tests/ --junitxml=test-results/results-${{ matrix.python-version }}.xml || true
+
+      - name: 📤  Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-py${{ matrix.python-version }}
+          path: test-results/
+          retention-days: 7     # keep reports for one week
