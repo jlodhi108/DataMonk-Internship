@@ -9,7 +9,7 @@ size affects query speed when no indexes are used.
 | File | Records | Notes |
 |---|---|---|
 | `../people-small.csv` | 100 | Plain CSV |
-| `../people-large.zip` | 2,000,000 | Zipped CSV (`people-2000000.csv`) to keep repo size down |
+| `../people-large.zip` | 2,000,000 | Zipped CSV |
 
 Both datasets share the same schema:
 
