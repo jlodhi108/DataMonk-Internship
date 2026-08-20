@@ -8,8 +8,8 @@ size affects query speed when no indexes are used.
 
 | File | Records | Notes |
 |---|---|---|
-| `people-small.csv` | 100 | Plain CSV, committed directly to the repo |
-| `people-large.zip` | 2,000,000 | Zipped CSV (`people-2000000.csv`) to keep repo size down |
+| `../people-small.csv` | 100 | Plain CSV, committed directly to the repo |
+| `../people-large.zip` | 2,000,000 | Zipped CSV (`people-2000000.csv`) to keep repo size down |
 
 Both datasets share the same schema:
 
@@ -19,7 +19,7 @@ Index, User Id, First Name, Last Name, Sex, Email, Phone, Date of birth, Job Tit
 
 ## What the script does
 
-`data_eng/sqlite_performance.py`:
+`sqlite_performance.py`:
 
 1. **Imports** both CSVs into a local SQLite database (`people.db`):
    - `people-small.csv` -> `people_small` table (100 rows)
@@ -45,7 +45,7 @@ python sqlite_performance.py
 ```
 
 This regenerates `people.db` and prints timing for every step (see
-`data_eng/terminal_log.txt` for an example run).
+`terminal_log.txt` for an example run).
 
 ## Results summary
 
