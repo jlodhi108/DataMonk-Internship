@@ -4,8 +4,8 @@ import zipfile
 import io
 import time
 
-SMALL_CSV = "../people-small.csv"
-LARGE_ZIP = "../people-large.zip"
+SMALL_CSV = "people-small.csv"
+LARGE_ZIP = "people-large.zip"
 LARGE_CSV_NAME = "people-2000000.csv"   # file name inside the zip
 DB_FILE = "people.db"
 
